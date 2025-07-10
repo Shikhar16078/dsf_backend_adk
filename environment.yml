@@ -1,0 +1,22 @@
+name: dsf_agents
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - annotated-types==0.7.0
+  - anyio==4.9.0
+  - attrs==25.3.0
+  - authlib==1.6.0
+  - cachetools==5.5.2
+  - certifi==2025.7.9
+  - cffi==1.17.1
+  - charset-normalizer==3.4.2
+  - click==8.2.1
+  - cloudpickle==3.1.1
+  - colorama==0.4.6
+  - cryptography==45.0.5
+  - fastapi==0.116.0
+  - pip
+  - pip:
+      - google-adk==1.6.1

@@ -1,12 +1,7 @@
-import os
-import sys
-
-# Add the project root (2 levels up from this file) to Python's module search path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
-
 from google.adk.agents import Agent
 from google.adk.tools import FunctionTool
-from utils import load_instructions_file, setup_logger
+from utils.logging_config import setup_logger
+from utils.file_loader import load_instructions_file
 
 # === Logging Setup ===
 logger = setup_logger(__name__)

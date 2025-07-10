@@ -1,16 +1,7 @@
-import os
-import sys
-
-# Add the project root (2 levels up from this file) to Python's module search path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
-
-from utils import setup_logger
-logger = setup_logger(__name__)
+from utils.logging_config import setup_logger
 
 from google.adk import Agent
-
-from utils import load_instructions_file
-
+from utils.file_loader import load_instructions_file
 from agents.talkative import root_agent as talkative
 from agents.scheduler import root_agent as scheduler
 
@@ -21,6 +12,7 @@ INSTRUCTIONS = load_instructions_file(filename="agents/coordinator/instructions.
 DESCRIPTION = load_instructions_file(filename="agents/coordinator/description.txt")
 
 # === Logging Configuration ===
+logger = setup_logger(__name__)
 logger.info(f"Entered {NAME} agent.")
 logger.info(f"Using Description: {DESCRIPTION[:50]}...")  # Log first 50 characters for brevity
 logger.info(f"Using Instructions: {INSTRUCTIONS[:50]}...")  # Log first 50 characters for brevity
