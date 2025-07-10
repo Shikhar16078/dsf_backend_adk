@@ -1,0 +1,82 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Enirionment variables
+.env
+
+# macOS system files
+.DS_Store
+
+# IDE/editor folders
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Log files
+*.log
+
+# Test and coverage outputs
+htmlcov/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.pyc
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+*.orig
+
+# MyPy type checker
+.mypy_cache/
+
+# Pytest cache
+.pytest_cache/
+
+# Byte-compiled / optimized / DLL files
+*.pyd
+*.pyo
+
+# Logs by specific time (like "agent - 10-30 PM.log")
+logs/
+!logs/.gitkeep  # Keep this if you want to track the folder but not the log files
+
+# Python packaging
+.eggs/
+pip-wheel-metadata/
+
+# Installer logs
+pip-log.txt
+
+# Environment dumps
+*.env.bak
+*.env.*
+
+# VS Code Workspace Storage
+.vscode-test/
+
+# Local data outputs
+data/
+*.sqlite3
+
+# Profiling data
+.prof
+
+# ADK-generated artifacts
+__adk_cache__/
+.adk/

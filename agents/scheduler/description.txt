@@ -1,0 +1,1 @@
+This agent helps university students build their academic schedule by recommending courses they are eligible to enroll in. It analyzes previously completed courses, cross-references them with offerings this quarter, and presents valid enrollment options. It can also provide general advice on course selection and confirm schedule updates.
