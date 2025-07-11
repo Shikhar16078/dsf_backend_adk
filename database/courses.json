@@ -1,0 +1,542 @@
+[
+    {
+        "course_id": "CS218",
+        "title": "Foundations of CS 218",
+        "professor": "Dr. Priya Mehta",
+        "location": "Engineering Building Room 204",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "10:00 AM – 11:30 AM",
+        "description": "This course explores essential data-structure and algorithm topics with hands-on labs and performance analysis.",
+        "credits": 4,
+        "prerequisites": [],
+        "seat_limit": 60,
+        "seats_filled": 56
+    },
+    {
+        "course_id": "CS220",
+        "title": "Advanced CS 220",
+        "professor": "Prof. Rachel Kim",
+        "location": "Lecture Center Room 210",
+        "days": [
+            "Tuesday",
+            "Friday"
+        ],
+        "timing": "01:00 PM – 02:30 PM",
+        "description": "Advanced programming paradigms and software-engineering practices with large-scale team projects.",
+        "credits": 4,
+        "prerequisites": [
+            "CS218"
+        ],
+        "seat_limit": 60,
+        "seats_filled": 52
+    },
+    {
+        "course_id": "CS224",
+        "title": "Principles of CS 224",
+        "professor": "Dr. Omar Farouk",
+        "location": "Tech Hall Room 101",
+        "days": [
+            "Monday",
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "03:30 PM – 05:00 PM",
+        "description": "Covers formal languages, automata, and complexity with emphasis on problem-classification techniques.",
+        "credits": 4,
+        "prerequisites": [
+            "CS218"
+        ],
+        "seat_limit": 50,
+        "seats_filled": 43
+    },
+    {
+        "course_id": "CS226",
+        "title": "Foundations of CS 226",
+        "professor": "Prof. Emily Zhou",
+        "location": "CompSci Lab Room 409",
+        "days": [
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "02:00 PM – 03:30 PM",
+        "description": "Discrete mathematics and proof techniques for computer science majors.",
+        "credits": 3,
+        "prerequisites": [
+            "CS224"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 36
+    },
+    {
+        "course_id": "CS230",
+        "title": "Advanced CS 230",
+        "professor": "Dr. Carlos Mendez",
+        "location": "Engineering Building Room 204",
+        "days": [
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "09:00 AM – 10:30 AM",
+        "description": "In-depth study of operating-system kernels, processes, and concurrency.",
+        "credits": 4,
+        "prerequisites": [
+            "CS218",
+            "CS226"
+        ],
+        "seat_limit": 60,
+        "seats_filled": 53
+    },
+    {
+        "course_id": "CS235",
+        "title": "Applied CS 235",
+        "professor": "Dr. James Lin",
+        "location": "Science Center Room 112",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "11:00 AM – 12:30 PM",
+        "description": "Computer-graphics fundamentals with OpenGL lab sessions.",
+        "credits": 3,
+        "prerequisites": [
+            "CS230"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 31
+    },
+    {
+        "course_id": "CS240",
+        "title": "Applied CS 240",
+        "professor": "Dr. Anil Rao",
+        "location": "Tech Hall Room 101",
+        "days": [
+            "Monday",
+            "Wednesday"
+        ],
+        "timing": "08:00 AM – 09:30 AM",
+        "description": "Database systems, relational algebra, SQL, and NoSQL concepts.",
+        "credits": 4,
+        "prerequisites": [
+            "CS230"
+        ],
+        "seat_limit": 60,
+        "seats_filled": 48
+    },
+    {
+        "course_id": "CS242",
+        "title": "Applied CS 242",
+        "professor": "Prof. Emily Zhou",
+        "location": "Engineering Building Room 204",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "03:30 PM – 05:00 PM",
+        "description": "Introduction to machine-learning pipelines and model evaluation.",
+        "credits": 4,
+        "prerequisites": [
+            "CS240"
+        ],
+        "seat_limit": 50,
+        "seats_filled": 39
+    },
+    {
+        "course_id": "CS245",
+        "title": "Principles of CS 245",
+        "professor": "Dr. Omar Farouk",
+        "location": "Math Building Room 305",
+        "days": [
+            "Monday",
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "11:00 AM – 12:30 PM",
+        "description": "Software-design patterns and architecture with semester-long project.",
+        "credits": 4,
+        "prerequisites": [
+            "CS230"
+        ],
+        "seat_limit": 50,
+        "seats_filled": 47
+    },
+    {
+        "course_id": "CS250",
+        "title": "Foundations of CS 250",
+        "professor": "Dr. Priya Mehta",
+        "location": "Lecture Center Room 210",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "02:00 PM – 03:30 PM",
+        "description": "Computer networks: TCP/IP, routing, and network programming labs.",
+        "credits": 4,
+        "prerequisites": [
+            "CS230"
+        ],
+        "seat_limit": 60,
+        "seats_filled": 54
+    },
+    {
+        "course_id": "CS255",
+        "title": "Advanced CS 255",
+        "professor": "Prof. Rachel Kim",
+        "location": "Science Center Room 112",
+        "days": [
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "08:00 AM – 09:30 AM",
+        "description": "Cybersecurity fundamentals and hands-on penetration-testing exercises.",
+        "credits": 3,
+        "prerequisites": [
+            "CS250"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 32
+    },
+    {
+        "course_id": "CS260",
+        "title": "Principles of CS 260",
+        "professor": "Dr. Carlos Mendez",
+        "location": "CompSci Lab Room 409",
+        "days": [
+            "Monday",
+            "Wednesday"
+        ],
+        "timing": "01:00 PM – 02:30 PM",
+        "description": "Compiler construction: lexing, parsing, and code generation.",
+        "credits": 4,
+        "prerequisites": [
+            "CS224"
+        ],
+        "seat_limit": 50,
+        "seats_filled": 42
+    },
+    {
+        "course_id": "CS261",
+        "title": "Applied CS 261",
+        "professor": "Dr. James Lin",
+        "location": "Lecture Center Room 210",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "11:00 AM – 12:30 PM",
+        "description": "Parallel and distributed computing using CUDA and MPI.",
+        "credits": 4,
+        "prerequisites": [
+            "CS260"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 35
+    },
+    {
+        "course_id": "CS262",
+        "title": "Foundations of CS 262",
+        "professor": "Prof. Emily Zhou",
+        "location": "Engineering Building Room 204",
+        "days": [
+            "Monday",
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "02:00 PM – 03:30 PM",
+        "description": "Theory of computation: decidability and intractability.",
+        "credits": 4,
+        "prerequisites": [
+            "CS224"
+        ],
+        "seat_limit": 50,
+        "seats_filled": 46
+    },
+    {
+        "course_id": "CS265",
+        "title": "Special Topics in CS 265",
+        "professor": "Dr. Anil Rao",
+        "location": "Math Building Room 305",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "09:00 AM – 10:30 AM",
+        "description": "Special topics: blockchain and decentralized applications.",
+        "credits": 3,
+        "prerequisites": [
+            "CS230"
+        ],
+        "seat_limit": 30,
+        "seats_filled": 26
+    },
+    {
+        "course_id": "CS266",
+        "title": "Advanced CS 266",
+        "professor": "Dr. Omar Farouk",
+        "location": "Tech Hall Room 101",
+        "days": [
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "01:00 PM – 02:30 PM",
+        "description": "Deep-learning architectures and GPU acceleration labs.",
+        "credits": 4,
+        "prerequisites": [
+            "CS242"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 34
+    },
+    {
+        "course_id": "CS270",
+        "title": "Foundations of CS 270",
+        "professor": "Dr. Priya Mehta",
+        "location": "Science Center Room 112",
+        "days": [
+            "Monday",
+            "Wednesday"
+        ],
+        "timing": "03:30 PM – 05:00 PM",
+        "description": "Mobile-application development for iOS and Android.",
+        "credits": 4,
+        "prerequisites": [
+            "CS250"
+        ],
+        "seat_limit": 60,
+        "seats_filled": 49
+    },
+    {
+        "course_id": "CS272",
+        "title": "Principles of CS 272",
+        "professor": "Prof. Rachel Kim",
+        "location": "Engineering Building Room 204",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "08:00 AM – 09:30 AM",
+        "description": "Natural-language processing with neural sequence models.",
+        "credits": 4,
+        "prerequisites": [
+            "CS266"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 33
+    },
+    {
+        "course_id": "CS275",
+        "title": "Advanced CS 275",
+        "professor": "Dr. James Lin",
+        "location": "Tech Hall Room 101",
+        "days": [
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "10:00 AM – 11:30 AM",
+        "description": "Game-engine architecture and real-time rendering techniques.",
+        "credits": 4,
+        "prerequisites": [
+            "CS235"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 37
+    },
+    {
+        "course_id": "CS280",
+        "title": "Applied CS 280",
+        "professor": "Dr. Carlos Mendez",
+        "location": "CompSci Lab Room 409",
+        "days": [
+            "Monday",
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "09:00 AM – 10:30 AM",
+        "description": "Big-data systems: Hadoop, Spark, and cloud scalability.",
+        "credits": 4,
+        "prerequisites": [
+            "CS250"
+        ],
+        "seat_limit": 50,
+        "seats_filled": 44
+    },
+    {
+        "course_id": "CS285",
+        "title": "Foundations of CS 285",
+        "professor": "Dr. Anil Rao",
+        "location": "Lecture Center Room 210",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "11:00 AM – 12:30 PM",
+        "description": "Full-stack web development with modern JavaScript frameworks.",
+        "credits": 4,
+        "prerequisites": [
+            "CS250"
+        ],
+        "seat_limit": 50,
+        "seats_filled": 45
+    },
+    {
+        "course_id": "CS290",
+        "title": "Principles of CS 290",
+        "professor": "Prof. Emily Zhou",
+        "location": "Science Center Room 112",
+        "days": [
+            "Monday",
+            "Wednesday"
+        ],
+        "timing": "02:00 PM – 03:30 PM",
+        "description": "IoT systems and sensor-network programming.",
+        "credits": 3,
+        "prerequisites": [
+            "CS250"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 32
+    },
+    {
+        "course_id": "CS295",
+        "title": "Special Topics in CS 295",
+        "professor": "Dr. Omar Farouk",
+        "location": "Engineering Building Room 204",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "09:00 AM – 10:30 AM",
+        "description": "Quantum computing algorithms and hardware overview.",
+        "credits": 3,
+        "prerequisites": [
+            "CS262"
+        ],
+        "seat_limit": 30,
+        "seats_filled": 27
+    },
+    {
+        "course_id": "CS296",
+        "title": "Advanced CS 296",
+        "professor": "Prof. Rachel Kim",
+        "location": "Math Building Room 305",
+        "days": [
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "11:00 AM – 12:30 PM",
+        "description": "Autonomous-robotics software and ROS integration.",
+        "credits": 4,
+        "prerequisites": [
+            "CS285"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 35
+    },
+    {
+        "course_id": "MATH131",
+        "title": "Calculus MATH 131",
+        "professor": "Dr. James Lin",
+        "location": "Lecture Center Room 210",
+        "days": [
+            "Monday",
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "08:00 AM – 09:30 AM",
+        "description": "Differential and integral calculus for science and engineering majors.",
+        "credits": 4,
+        "prerequisites": [],
+        "seat_limit": 60,
+        "seats_filled": 58
+    },
+    {
+        "course_id": "STAT155",
+        "title": "Applied Stats STAT 155",
+        "professor": "Dr. Priya Mehta",
+        "location": "Science Center Room 112",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "01:00 PM – 02:30 PM",
+        "description": "Introduction to applied statistics with R and real-world datasets.",
+        "credits": 4,
+        "prerequisites": [
+            "MATH131"
+        ],
+        "seat_limit": 60,
+        "seats_filled": 55
+    },
+    {
+        "course_id": "EE120",
+        "title": "Digital Circuits EE 120",
+        "professor": "Dr. Carlos Mendez",
+        "location": "Engineering Building Room 204",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "10:00 AM – 11:30 AM",
+        "description": "Logic-gate design, finite state machines, and FPGA labs.",
+        "credits": 3,
+        "prerequisites": [],
+        "seat_limit": 50,
+        "seats_filled": 41
+    },
+    {
+        "course_id": "EE125",
+        "title": "Signals & Systems EE 125",
+        "professor": "Dr. Anil Rao",
+        "location": "Tech Hall Room 101",
+        "days": [
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "02:00 PM – 03:30 PM",
+        "description": "Continuous- and discrete-time signal analysis; Fourier transforms.",
+        "credits": 4,
+        "prerequisites": [
+            "EE120"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 28
+    },
+    {
+        "course_id": "EE130",
+        "title": "Embedded Systems EE 130",
+        "professor": "Prof. Rachel Kim",
+        "location": "CompSci Lab Room 409",
+        "days": [
+            "Monday",
+            "Wednesday"
+        ],
+        "timing": "03:30 PM – 05:00 PM",
+        "description": "Microcontroller programming and real-time operating systems.",
+        "credits": 4,
+        "prerequisites": [
+            "EE120"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 34
+    },
+    {
+        "course_id": "EE140",
+        "title": "Electronics EE 140",
+        "professor": "Dr. Omar Farouk",
+        "location": "Math Building Room 305",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "11:00 AM – 12:30 PM",
+        "description": "Analog electronics: diodes, BJTs, MOSFETs, op-amps, and design labs.",
+        "credits": 4,
+        "prerequisites": [
+            "EE120"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 30
+    }
+]
