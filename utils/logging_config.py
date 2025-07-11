@@ -5,8 +5,8 @@ from datetime import datetime
 def setup_logger(name: str) -> logging.Logger:
     os.makedirs("logs", exist_ok=True)
 
-    # Get current time and format as HH:MM AM/PM
-    timestamp = datetime.now().strftime("%I-%M %p")  # Use "-" instead of ":" for file compatibility
+    # Format: 11 July 2025 - 11-02 PM
+    timestamp = datetime.now().strftime("%d %B %Y - %I-%M %p")
     log_filename = f"logs/{timestamp}.log"
 
     formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s")
@@ -19,7 +19,7 @@ def setup_logger(name: str) -> logging.Logger:
 
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
-    
+
     # Prevent duplicate handlers if already set
     if not logger.handlers:
         logger.addHandler(file_handler)
