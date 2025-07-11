@@ -1,15 +1,15 @@
 [
     {
         "course_id": "CS218",
-        "title": "Foundations of CS 218",
-        "professor": "Dr. Priya Mehta",
-        "location": "Engineering Building Room 204",
+        "title": "Design and Analysis of Algorithms",
+        "professor": "Dr. Mingxun Wang",
+        "location": "Material Science Building 1002",
         "days": [
             "Tuesday",
             "Thursday"
         ],
         "timing": "10:00 AM – 11:30 AM",
-        "description": "This course explores essential data-structure and algorithm topics with hands-on labs and performance analysis.",
+        "description": "This course explores essential data-structure and algorithm topics.",
         "credits": 4,
         "prerequisites": [],
         "seat_limit": 60,
@@ -35,19 +35,38 @@
     },
     {
         "course_id": "CS224",
-        "title": "Principles of CS 224",
-        "professor": "Dr. Omar Farouk",
-        "location": "Tech Hall Room 101",
+        "title": "Foundations of Machine Learning",
+        "professor": "Dr. Greg Veer Steeg",
+        "location": "Student Success Center Room 305",
         "days": [
             "Monday",
             "Wednesday",
             "Friday"
         ],
         "timing": "03:30 PM – 05:00 PM",
-        "description": "Covers formal languages, automata, and complexity with emphasis on problem-classification techniques.",
+        "description": "Covers machine learning concepts and techniques. Foundational course for advanced ML topics.",
         "credits": 4,
         "prerequisites": [
-            "CS218"
+            "CS205"
+        ],
+        "seat_limit": 50,
+        "seats_filled": 43
+    },
+    {
+        "course_id": "CS205",
+        "title": "Introduction to Artificial Intelligence",
+        "professor": "Dr. Paea LePendu",
+        "location": "Chass Interdisciplinary North Room 1001",
+        "days": [
+            "Monday",
+            "Wednesday",
+            "Friday"
+        ],
+        "timing": "11:00 AM – 11:50 AM",
+        "description": "Courses basics of AI, including search algorithms, knowledge representation, and basic machine learning.",
+        "credits": 4,
+        "prerequisites": [
+            "CS115"
         ],
         "seat_limit": 50,
         "seats_filled": 43
@@ -91,16 +110,34 @@
     },
     {
         "course_id": "CS235",
-        "title": "Applied CS 235",
-        "professor": "Dr. James Lin",
-        "location": "Science Center Room 112",
+        "title": "Data Mining Techniques 235",
+        "professor": "Dr. Vagelis Papalexakis",
+        "location": "Bourns A-125",
         "days": [
             "Tuesday",
             "Thursday"
         ],
         "timing": "11:00 AM – 12:30 PM",
-        "description": "Computer-graphics fundamentals with OpenGL lab sessions.",
-        "credits": 3,
+        "description": "Data Mining Fundamentals course. Covers data preprocessing, clustering, and classification techniques.",
+        "credits": 4,
+        "prerequisites": [
+            "CS230"
+        ],
+        "seat_limit": 40,
+        "seats_filled": 31
+    },
+    {
+        "course_id": "CS236",
+        "title": "Advanced Database Management Systems",
+        "professor": "Dr. Amr Magdy",
+        "location": "Bourns A-125",
+        "days": [
+            "Tuesday",
+            "Thursday"
+        ],
+        "timing": "05:00 PM – 06:20 PM",
+        "description": "Advanced topics in database systems, including NoSQL databases and query optimization, spatial queries.",
+        "credits": 4,
         "prerequisites": [
             "CS230"
         ],
