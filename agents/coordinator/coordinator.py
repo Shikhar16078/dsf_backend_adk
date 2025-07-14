@@ -17,6 +17,7 @@ logger.info(f"Entered {NAME} agent.")
 logger.info(f"Using Description: {DESCRIPTION[:50]}...")  # Log first 50 characters for brevity
 logger.info(f"Using Instructions: {INSTRUCTIONS[:50]}...")  # Log first 50 characters for brevity
 
+
 # Create the root coordinator agent with the talkative and scheduler sub-agent
 coordinator = Agent(
     name=NAME,
@@ -26,6 +27,27 @@ coordinator = Agent(
     sub_agents=[talkative, scheduler],
 )
 
+def route_input(user_input: str):
+    prompt = f"""{INSTRUCTIONS}
+
+Student message:
+"{user_input}"
+
+Your answer (only return 'scheduling_agent' or 'talkative_sub_agent'):
+"""
+    try:
+        response = coordinator.model(prompt).strip().lower()
+        if "schedule" in response:
+            return scheduler
+        elif "chat" in response:
+            return talkative
+        else:
+            logger.warning(f"[Router] Unknown response from LLM: {response}, defaulting to talkative.")
+            return talkative
+    except Exception as e:
+        logger.error(f"[Router] LLM failed: {e}")
+        return talkative
+    
 root_agent = coordinator
 
 # Log the successful initialization of the agent

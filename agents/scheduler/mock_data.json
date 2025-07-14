@@ -1,0 +1,141 @@
+{
+  "degree_plan": {
+    "year_1": {
+      "Fall": ["CS010A", "MATH009A", "ENGL001A", "ENGR001I"],
+      "Winter": ["CS010B", "MATH009B", "ENGL001B", "MATH/CS011"],
+      "Spring": ["CS010C", "MATH009C", "BREADTH_1"]
+    },
+    "year_2": {
+      "Fall": ["CS061", "PHYS040A", "MATH031", "BREADTH_2"],
+      "Winter": ["CS100", "PHYS040B", "CS111"],
+      "Spring": ["STAT155", "PHYS040C", "EE120", "BREADTH_3"]
+    },
+    "year_3": {
+      "Fall": ["CS141", "CS150", "TECH_ELECTIVE_1", "BREADTH_4"],
+      "Winter": ["CS161", "CS152", "TECH_ELECTIVE_2", "ENGR180W"],
+      "Spring": ["CS153", "TECH_ELECTIVE_3", "ENGR_BREADTH_ELECTIVE", "BREADTH_5"]
+    },
+    "year_4": {
+      "Fall": ["CS179_OR_CS178A", "TECH_ELECTIVE_4", "TECH_ELECTIVE_5", "BREADTH_6"],
+      "Winter": ["CS178B_OR_TECH_ELECTIVE_6", "TECH_ELECTIVE_7", "ENGR101I", "BREADTH_7"],
+      "Spring": ["TECH_ELECTIVE_8", "ENGR_DEPTH_ELECTIVE", "BIO_SCIENCE", "BREADTH_8"]
+    },
+    "additional_requirements": {
+      "HUMANITIES": ["HUMANITIES_1", "HUMANITIES_2", "HUMANITIES_3"],
+      "SOCIAL_SCIENCES": ["SOCSCI_1", "SOCSCI_2", "SOCSCI_3"],
+      "ETHNIC_STUDIES": ["ETHNIC_STUDIES"]
+    }
+  },
+  "quarter_offerings": [
+    { "course": "CS010A", "days": "MWF", "start_time": "09:00", "end_time": "09:50" },
+    { "course": "CS010B", "days": "TR",  "start_time": "10:30", "end_time": "11:50" },
+    { "course": "CS010C", "days": "MWF", "start_time": "12:00", "end_time": "12:50" },
+    { "course": "CS100",  "days": "MW",  "start_time": "14:00", "end_time": "15:20" },
+    { "course": "CS111",  "days": "TR",  "start_time": "09:00", "end_time": "10:20" },
+    { "course": "CS150",  "days": "MWF", "start_time": "13:00", "end_time": "13:50" },
+    { "course": "CS152",  "days": "TR",  "start_time": "15:30", "end_time": "16:50" },
+    { "course": "CS272",  "days": "MW",  "start_time": "08:00", "end_time": "09:20" },
+    { "course": "MATH009A", "days": "MWF", "start_time": "10:00", "end_time": "10:50" },
+    { "course": "MATH009B", "days": "TR",  "start_time": "13:00", "end_time": "14:20" },
+    { "course": "MATH031",  "days": "MWF", "start_time": "11:00", "end_time": "11:50" },
+    { "course": "STAT155",  "days": "TR",  "start_time": "14:00", "end_time": "15:20" },
+    { "course": "PHYS040A", "days": "MWF", "start_time": "08:00", "end_time": "08:50" },
+    { "course": "PHYS040B", "days": "TR",  "start_time": "10:00", "end_time": "11:20" },
+    { "course": "ENGL001A", "days": "MWF", "start_time": "09:00", "end_time": "09:50" },
+    { "course": "ENGL001B", "days": "TR",  "start_time": "12:00", "end_time": "13:20" },
+    { "course": "ENGR001I", "days": "MW",  "start_time": "15:00", "end_time": "16:20" },
+    { "course": "ENGR101I", "days": "TR",  "start_time": "08:00", "end_time": "09:20" },
+    { "course": "ENGR180W", "days": "MWF", "start_time": "11:00", "end_time": "11:50" },
+    { "course": "TECH_ELECTIVE_1", "days": "MWF", "start_time": "14:00", "end_time": "14:50" },
+    { "course": "TECH_ELECTIVE_2", "days": "TR",  "start_time": "16:00", "end_time": "17:20" },
+    { "course": "HUMANITIES_1",    "days": "MW",  "start_time": "12:30", "end_time": "13:50" },
+    { "course": "SOCSCI_1",        "days": "TR",  "start_time": "11:00", "end_time": "12:20" },
+    { "course": "BIO_SCIENCE",     "days": "MWF", "start_time": "08:00", "end_time": "08:50" }
+    ],
+  "prerequisites": {
+    "CS010B": ["CS010A"],
+    "CS010C": ["CS010B"],
+    "CS100": ["CS010C"],
+    "CS111": ["MATH011"],
+    "CS141": ["CS010C"],
+    "CS150": ["CS141"],
+    "CS152": ["CS150"],
+    "CS153": ["CS141"],
+    "CS161": ["CS141"],
+    "CS272": ["CS100", "CS153"],
+    "STAT155": ["MATH009C"],
+    "MATH010A": ["MATH009C"],
+    "PHYS040B": ["PHYS040A"],
+    "PHYS040C": ["PHYS040B"],
+    "ENGR180W": ["ENGL001B"],
+    "TECH_ELECTIVE_2": ["CS100"]
+  },
+  "student_info": {
+    "Student_ID": "S12345678",
+    "Term": "2025 Spring",
+    "year": "year_1",
+    "Student_Level": "Undergraduate",
+    "College_1": "EN",
+    "College_1_Desc": "Bourns College of Engineering",
+    "Degree_1": "BS",
+    "Degree_1_Desc": "Bachelor of Science",
+    "Major_1": "CSCI",
+    "Major_1_Desc": "Computer Science",
+    "College_2": "CNAS",
+    "College_2_Desc": "College of Natural and Agricultural Sciences",
+    "Degree_2": "BA",
+    "Degree_2_Desc": "Bachelor of Arts",
+    "Major_2": "STAT",
+    "Major_2_Desc": "Statistics"
+  },
+  "course_enrollments": [
+    {
+      "Student_course_Student_ID": "S12345678",
+      "Student_course_Term": "2024 Fall",
+      "Student_course_Course": "CS010A",
+      "Student_course_Course_Section_Number": "001",
+      "Student_course_Class_Type": "Lecture",
+      "Student_course_Course_Reference_Number": "15432"
+    },
+    {
+      "Student_course_Student_ID": "S12345678",
+      "Student_course_Term": "2024 Fall",
+      "Student_course_Course": "MATH009A",
+      "Student_course_Course_Section_Number": "002",
+      "Student_course_Class_Type": "Lecture",
+      "Student_course_Course_Reference_Number": "14328"
+    },
+    {
+      "Student_course_Student_ID": "S12345678",
+      "Student_course_Term": "2024 Fall",
+      "Student_course_Course": "ENGL001A",
+      "Student_course_Course_Section_Number": "005",
+      "Student_course_Class_Type": "Discussion",
+      "Student_course_Course_Reference_Number": "13378"
+    },
+    {
+      "Student_course_Student_ID": "S12345678",
+      "Student_course_Term": "2024 Fall",
+      "Student_course_Course": "ENGR001I",
+      "Student_course_Course_Section_Number": "001",
+      "Student_course_Class_Type": "Seminar",
+      "Student_course_Course_Reference_Number": "11223"
+    },
+    {
+      "Student_course_Student_ID": "S12345678",
+      "Student_course_Term": "2025 Winter",
+      "Student_course_Course": "CS010B",
+      "Student_course_Course_Section_Number": "001",
+      "Student_course_Class_Type": "Lecture",
+      "Student_course_Course_Reference_Number": "16455"
+    },
+    {
+      "Student_course_Student_ID": "S12345678",
+      "Student_course_Term": "2025 Winter",
+      "Student_course_Course": "MATH009B",
+      "Student_course_Course_Section_Number": "002",
+      "Student_course_Class_Type": "Lecture",
+      "Student_course_Course_Reference_Number": "14654"
+    }
+  ]
+}
