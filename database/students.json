@@ -1,0 +1,87 @@
+[
+    {
+        "name": "Alice Johnson",
+        "student_id": "862547410",
+        "graduation_quarter": "Spring",
+        "graduation_year": 2025,
+        "courses_taken": [
+            "CS218",
+            "CS224",
+            "CS230",
+            "MATH131",
+            "STAT155",
+            "CS240",
+            "CS245",
+            "CS250",
+            "EE120"
+        ]
+    },
+    {
+        "name": "Brian Patel",
+        "student_id": "862547411",
+        "graduation_quarter": "Winter",
+        "graduation_year": 2025,
+        "courses_taken": [
+            "CS218",
+            "CS230",
+            "CS235",
+            "CS240",
+            "CS250",
+            "CS260",
+            "CS261",
+            "MATH131",
+            "STAT155"
+        ]
+    },
+    {
+        "name": "Cynthia Lee",
+        "student_id": "862547412",
+        "graduation_quarter": "Fall",
+        "graduation_year": 2026,
+        "courses_taken": [
+            "CS218",
+            "CS224",
+            "CS230",
+            "CS235",
+            "CS240",
+            "CS245",
+            "CS260",
+            "EE120",
+            "STAT155"
+        ]
+    },
+    {
+        "name": "Daniel Smith",
+        "student_id": "862547413",
+        "graduation_quarter": "Summer",
+        "graduation_year": 2025,
+        "courses_taken": [
+            "CS218",
+            "CS224",
+            "CS235",
+            "CS240",
+            "CS245",
+            "CS250",
+            "CS261",
+            "MATH131",
+            "STAT155"
+        ]
+    },
+    {
+        "name": "Emily Zhang",
+        "student_id": "862547414",
+        "graduation_quarter": "Spring",
+        "graduation_year": 2025,
+        "courses_taken": [
+            "CS230",
+            "CS235",
+            "CS240",
+            "CS245",
+            "CS250",
+            "CS260",
+            "CS262",
+            "MATH131",
+            "STAT155"
+        ]
+    }
+]
