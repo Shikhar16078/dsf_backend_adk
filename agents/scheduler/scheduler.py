@@ -13,7 +13,7 @@ from utils import load_instructions_file, setup_logger
 # === Logging Setup ===
 logger = setup_logger(__name__)
 
-# Loading differnet Datbase files and caching them 
+# Loading different database files and caching them 
 _COURSE_CACHE = None
 _OFFERINGS_CACHE = None
 

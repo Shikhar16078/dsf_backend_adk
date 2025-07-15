@@ -15,7 +15,7 @@ from google.adk.agents.callback_context import CallbackContext
 from typing import Optional
 from google.genai import types
 
-# Import diferent agents
+# Import different agents
 from agents.talkative import root_agent as talkative
 from agents.scheduler import root_agent as scheduler
 

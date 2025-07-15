@@ -63,7 +63,7 @@
             "Friday"
         ],
         "timing": "11:00 AM – 11:50 AM",
-        "description": "Courses basics of AI, including search algorithms, knowledge representation, and basic machine learning.",
+        "description": "Covers basics of AI, including search algorithms, knowledge representation, and basic machine learning.",
         "credits": 4,
         "prerequisites": [
             "CS115"

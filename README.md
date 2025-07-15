@@ -6,12 +6,23 @@ This repository implements a multi-agent system using **Google's Agent Developme
 
 ## 🚀 Features
 
-- 🤖 Modular agent architecture using Google ADK
-- 🧭 Root agent routes requests to sub-agents based on user intent
-- 📚 Scheduler agent recommends courses based on academic history
-- 💬 Talkative agent handles casual, ethical, and off-topic conversation
-- 📦 Easy to extend with new tools or agents
-- 📜 Clean logging and instruction-based agent behavior
+- 🤖 **Modular Agent Architecture**  
+  Built using Google ADK for a clean, extensible agent-based system.
+
+- 🧭 **Intent-Based Routing**  
+  A root agent intelligently routes user requests to the appropriate sub-agent based on intent.
+
+- 📚 **Scheduler Agent**  
+  Handles scheduling-related queries by interacting with mock databases (courses, offerings, students), and includes tools like `get_enrollable_courses`, `get_course_details`, and `build_schedule`.
+
+- 💬 **Talkative Agent**  
+  Manages casual, off-topic, and ethical conversations, ensuring user engagement stays human-like and safe.
+
+- 📦 **Easily Extensible**  
+  Simple to add new tools or agents with minimal changes, enabling fast iteration.
+
+- 📜 **Instruction-Based Behavior + Logging**  
+  Agent behavior is driven by instruction files, with clean and contextual logging to aid debugging and traceability.
 
 ---
 
@@ -35,9 +46,9 @@ dsf_backend_adk/
 ├── utils/
 │   ├── file_loader.py                # Load instructions from .txt
 │   └── logging_config.py             # Logger setup
-├── tools/                           # Tool functions (if any)
-├── logs/                            # Runtime logs
-├── .env                             # API keys / config (not committed)
+├── tools/                            # Tool functions (if any)
+├── logs/                             # Runtime logs
+├── .env                              # API keys / config (not committed)
 └── README.md
 ```
 
@@ -45,27 +56,28 @@ dsf_backend_adk/
 
 ## 🧠 Agents Overview
 
-### 🔸 coordinator (Root Agent)
+This project uses a modular, agent-based architecture powered by Google ADK. Below is a high-level summary of each agent's role.
 
-- Routes user queries to appropriate sub-agents
-- Parses intent but does **not** respond directly
-- Sub-agents:
-  - `scheduler`
-  - `talkative`
-
-### 🔹 scheduler
-
-- Recommends courses based on previously taken ones
-- Accepts `student_details` from state
-- Returns list of enrollable courses
-
-### 🔹 talkative
-
-- Handles greetings, goodbyes, off-topic, unethical, or casual chatter
-- Uses scripted logic and never invokes tools or accesses backend
-- Robust instruction set ensures controlled replies
+➡️ For implementation details, see the [Agents Documentation](./agents/README.md).
 
 ---
+
+### 🔸 `coordinator` (Root Agent)
+
+- Acts as the top-level router for all user queries
+- Parses intent and forwards requests to the appropriate sub-agent
+- Does **not** respond directly
+- Sets up student context via a `before_agent_callback` to mock end-user
+
+### 🔹 `scheduler`
+
+- Handles scheduling-related tasks like course recommendations, offerings lookup, and mock schedule creation
+- Operates on mock academic data for students, courses, and offerings
+
+### 🔹 `talkative`
+
+- Manages social, casual, off-topic, or unethical queries
+- Instruction-only agent with no backend or tool access
 
 ## 🛠️ Setup Instructions
 
