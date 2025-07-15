@@ -58,7 +58,7 @@ dsf_backend_adk/
 
 This project uses a modular, agent-based architecture powered by Google ADK. Below is a high-level summary of each agent's role.
 
-➡️ For implementation details, see the [Agents Documentation](./agents/README.md).
+➡️ For implementation details, see the [Agents Documentation](./agents/).
 
 ---
 
