@@ -16,7 +16,7 @@ This repository implements a multi-agent system using **Google's Agent Developme
   Handles scheduling-related queries by interacting with mock databases (courses, offerings, students), and includes tools like `get_enrollable_courses`, `get_course_details`, and `build_schedule`.
 
 - 💬 **Talkative Agent**  
-  Manages casual, off-topic, and ethical conversations, ensuring user engagement stays human-like and safe.
+  Manages casual, off-topic, and ethical conversations, ensuring user engagement stays human-like and safe. Additionally supports basic academic and scheduling FAQs using a built-in question-matching tool.
 
 - 📦 **Easily Extensible**  
   Simple to add new tools or agents with minimal changes, enabling fast iteration.
@@ -38,7 +38,8 @@ dsf_backend_adk/
 │   ├── talkative/                    # Sub-agent for casual interactions
 │   │   ├── agent.py
 │   │   ├── description.txt
-│   │   └── instructions.txt
+│   │   ├── instructions.txt
+│   │   └── FAQs.yaml
 │   └── user_level_coordinator/       # Root agent (router)
 │       ├── agent.py
 │       ├── description.txt
