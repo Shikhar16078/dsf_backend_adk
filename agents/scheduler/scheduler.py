@@ -6,11 +6,14 @@ from pathlib import Path
 # Add the project root (2 levels up from this file) to Python's module search path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
+# Import necessary modules from the project
 from google.adk.agents import Agent
 from google.adk.tools import ToolContext
+from google.cloud import bigquery
 from utils import load_instructions_file, setup_logger
 
 # === Logging Setup ===
+bq_client = bigquery.Client()
 logger = setup_logger(__name__)
 
 # Loading different database files and caching them 
@@ -34,83 +37,86 @@ def _load_offerings(path: str | Path = "database/offerings.json") -> list[dict]:
 
 # === Tools ===
 
-def get_enrollable_courses(quarter: str, year: str, tool_context: ToolContext) -> dict:
+def get_enrollable_courses(tool_context: ToolContext) -> dict:
     """
-    Returns a list of courses the student is eligible to enroll in for the specified quarter and year.
+    Retrieves the list of courses that a student still needs and that are offered in the upcoming term.
 
-    A course is considered enrollable if:
-      - The course is offered in the specified term (quarter + year).
-      - The student has not already taken it.
-      - All prerequisites have been completed.
-
-    Parameters:
-        quarter (str): The academic term (e.g., "Fall", "Winter", "Summer", "Spring").
-        year (str): The academic year as a string (e.g., "2024").
-        tool_context (ToolContext): Contains `state["student_details"]` with `courses_taken`.
+    This function performs two BigQuery operations:
+    1. It fetches the list of courses the student has yet to complete.
+    2. It fetches the list of courses being offered in the next academic term.
+    It then computes the intersection to determine which needed courses are available for enrollment.
 
     Returns:
-        dict: {
-            "status": "success" | "error",
-            "message": "...",
-            "courses": [list of eligible course detail dicts]
+        dict: A dictionary containing:
+            - 'status' (str): 'success' or 'error'.
+            - 'message' (str): A descriptive message.
+            - 'courses' (list): A sorted list of eligible course IDs the student can enroll in.
+
+    Example:
+        {
+            "status": "success",
+            "message": "4 courses are available for enrollment next term.",
+            "courses": ["CS101", "MATH205", "ENG150", "BIO220"]
         }
+
+    Notes:
+        - The student ID is currently hardcoded and should be dynamically injected in production.
+        - Relies on two BigQuery tables:
+            1. `schedule_recommend.student_courses_needed`
+            2. `schedule_recommend.next_term_course_offerings`
     """
     try:
-        student = tool_context.state["student_details"]
-        taken = set(student.get("courses_taken", []))
-        year_int = int(year)
+        # === Get list of courses student still needs ===
+        student_id = "AAAr+31XvoSD4GO4PvUzMvA3tZzHzQezVLUhUdPuwiQ="
+        tool_context.state["student_id"] = student_id  # Store in context for later use
 
-        catalog = _load_courses()
-        offerings = _load_offerings()
+        query_needed = """
+            SELECT Still_Needed
+            FROM `schedule_recommend.student_courses_needed`
+            WHERE TO_BASE64(Student_ID) = @student_id
+        """
+        job_config_needed = bigquery.QueryJobConfig(
+            query_parameters=[
+                bigquery.ScalarQueryParameter("student_id", "STRING", student_id)
+            ]
+        )
+        result_needed = list(bq_client.query(query_needed, job_config=job_config_needed).result())
 
-    except (KeyError, FileNotFoundError, json.JSONDecodeError, ValueError) as e:
-        logger.error(f"Failed to load data: {e}")
+        if not result_needed or not result_needed[0]["Still_Needed"]:
+            return {
+                "status": "error",
+                "message": "No 'Still_Needed' courses found for the student.",
+                "courses": []
+            }
+
+        still_needed = set(
+            c.strip() for c in result_needed[0]["Still_Needed"].split(",") if c.strip()
+        )
+
+        # === Get list of courses offered next term ===
+        query_offerings = """
+            SELECT COURSE_ID
+            FROM `schedule_recommend.next_term_course_offerings`
+        """
+        result_offerings = list(bq_client.query(query_offerings).result())
+        offered_courses = set(row["COURSE_ID"] for row in result_offerings if row["COURSE_ID"])
+
+        # === Intersect ===
+        eligible_courses = sorted(list(still_needed & offered_courses))
+
         return {
-            "status": "error",
-            "message": f"Failed to compute enrollable courses: {e}",
-            "courses": []
+            "status": "success",
+            "message": f"{len(eligible_courses)} courses are available for enrollment next term.",
+            "courses": eligible_courses
         }
 
-    # Find offered course IDs for this quarter/year
-    offering_this_term = next(
-        (entry for entry in offerings if entry["term"].lower() == quarter.lower() and entry["year"] == year_int),
-        None
-    )
-
-    if not offering_this_term:
-        msg = f"No offerings found for {quarter} {year}"
-        logger.warning(msg)
+    except Exception as e:
+        print(f"Error fetching enrollable courses: {e}")
         return {
             "status": "error",
-            "message": msg,
+            "message": f"Failed to load enrollable courses: {e}",
             "courses": []
         }
-
-    offered_courses = set(offering_this_term["courses"])
-    logger.info(f"Courses offered in {quarter} {year}: {offered_courses}")
-
-    enrollable = []
-    for course in catalog:
-        course_id = course.get("course_id")
-        prereqs = set(course.get("prerequisites", []))
-
-        if (
-            course_id in offered_courses and
-            course_id not in taken and
-            prereqs.issubset(taken)
-        ):
-            enrollable.append(course)
-
-    enrollable = sorted(enrollable, key=lambda c: c["course_id"])
-
-    logger.info(f"Student's courses taken: {taken}")
-    logger.info(f"Eligible courses for enrollment: {[c['course_id'] for c in enrollable]}")
-
-    return {
-        "status": "success",
-        "message": f"Here are the courses you can enroll in for {quarter} {year}.",
-        "courses": enrollable
-    }
 
 def get_course_details(course_id: str) -> dict:
     """
