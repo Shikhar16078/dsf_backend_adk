@@ -16,27 +16,8 @@ from utils import load_instructions_file, setup_logger
 bq_client = bigquery.Client()
 logger = setup_logger(__name__)
 
-# Loading different database files and caching them 
-_COURSE_CACHE = None
-_OFFERINGS_CACHE = None
-
-def _load_courses(path: str | Path = "database/courses.json") -> list[dict]:
-    global _COURSE_CACHE
-    if _COURSE_CACHE is None:
-        with open(path, "r", encoding="utf-8") as f:
-            _COURSE_CACHE = json.load(f)
-    return _COURSE_CACHE
-
-def _load_offerings(path: str | Path = "database/offerings.json") -> list[dict]:
-    global _OFFERINGS_CACHE
-    if _OFFERINGS_CACHE is None:
-        with open(path, "r", encoding="utf-8") as f:
-            _OFFERINGS_CACHE = json.load(f)
-    return _OFFERINGS_CACHE
-
 
 # === Tools ===
-
 def get_enrollable_courses(tool_context: ToolContext) -> dict:
     """
     Retrieves the list of courses that a student still needs and that are offered in the upcoming term.
@@ -67,9 +48,18 @@ def get_enrollable_courses(tool_context: ToolContext) -> dict:
     """
     try:
         # === Get list of courses student still needs ===
-        student_id = "AAAr+31XvoSD4GO4PvUzMvA3tZzHzQezVLUhUdPuwiQ="
-        tool_context.state["student_id"] = student_id  # Store in context for later use
-
+        student_details = tool_context.state.get("student_details", {})
+        student_id = student_details.get("Student_ID")
+        logger.info(f"Fetching enrollable courses for student ID: {student_id}")
+        
+        # If student_id is not set, return an error
+        if not student_id:
+            return {
+                "status": "error",
+                "message": "Student ID not found in context state.",
+                "courses": []
+            }
+        
         query_needed = """
             SELECT Still_Needed
             FROM `schedule_recommend.student_courses_needed`
@@ -120,122 +110,58 @@ def get_enrollable_courses(tool_context: ToolContext) -> dict:
 
 def get_course_details(course_id: str) -> dict:
     """
-    Retrieve detailed information for a specific course by its course ID.
+    Retrieve detailed offering information for a specific course by its course ID.
 
-    This function searches the course catalog for a course matching the provided
-    `course_id` (e.g., "CS101") and returns its full details if found. It is designed 
-    to be used as a tool function in agent workflows that require academic course data.
+    This function queries BigQuery's `next_term_course_offerings` table to find all sections
+    of a given course (e.g., "ENGR001M") offered in the upcoming term.
 
     Parameters:
-        course_id (str): The unique identifier of the course to retrieve.
+        course_id (str): The course ID to look up.
 
     Returns:
-        dict: A dictionary containing the operation result. The response includes:
-            - status (str): "success" if the course is found, otherwise "error".
-            - course_details (dict): The full course object if found, or an empty dict.
-            - message (str, optional): Error description if the operation failed.
-
-    Example successful response:
-        {
-            "status": "success",
-            "course_details": {
-                "course_id": "CS218",
-                "title": "Foundations of CS 218",
-                ...
-            }
-        }
-
-    Example error response (course not found):
-        {
-            "status": "error",
-            "course_details": {},
-            "message": "Course 'CS999' not found"
-        }
-    """
-
-    try:
-        courses = _load_courses()
-    except (FileNotFoundError, json.JSONDecodeError) as exc:
-        return {
-            "status": "error",
-            "course_details": {},
-            "message": f"Unable to load course catalog: {exc}"
-        }
-
-    # Find the first course whose course_id matches (case-sensitive)
-    for course in courses:
-        if course.get("course_id") == course_id:
-            return {
-                "status": "success",
-                "course_details": course
-            }
-
-    # If nothing matched
-    return {
-        "status": "error",
-        "course_details": {},
-        "message": f"Course '{course_id}' not found"
-    }
-
-def get_course_offerings(quarter: str, year: str) -> dict:
-    """
-    Retrieve the list of course IDs offered in a specific academic term.
-
-    Parameters
-    ----------
-    quarter : str
-        Academic term (e.g., "Fall", "Winter", "Spring", "Summer").
-        Matching is case-insensitive.
-    year : str
-        Four-digit calendar year, passed as string (e.g., "2024").
-
-    Returns
-    -------
-    dict
-        {
+        dict: {
             "status": "success" | "error",
-            "message": <human-readable status>,
-            "offerings": [<course_id>, ...]   # empty list if none / on error
+            "course_details": [list of offering dicts],
+            "message": optional message
         }
     """
     try:
-        year_int = int(year)
-        offerings_data = _load_offerings()
-    except (ValueError, FileNotFoundError, json.JSONDecodeError) as exc:
-        logger.error(f"Unable to load offerings data: {exc}")
+        query = """
+            SELECT *
+            FROM `schedule_recommend.next_term_course_offerings`
+            WHERE COURSE_ID = @course_id
+        """
+        job_config = bigquery.QueryJobConfig(
+            query_parameters=[
+                bigquery.ScalarQueryParameter("course_id", "STRING", course_id)
+            ]
+        )
+        results = list(bq_client.query(query, job_config=job_config).result())
+
+        if not results:
+            return {
+                "status": "error",
+                "course_details": [],
+                "message": f"No offerings found for course '{course_id}'."
+            }
+
+        offerings = [dict(row) for row in results]
+
         return {
-            "status": "error",
-            "message": f"Failed to retrieve offerings: {exc}",
-            "offerings": []
+            "status": "success",
+            "course_details": offerings
         }
 
-    # Locate the term entry
-    term_entry = next(
-        (
-            entry for entry in offerings_data
-            if entry["term"].lower() == quarter.lower() and entry["year"] == year_int
-        ),
-        None
-    )
-
-    if term_entry is None:
-        msg = f"No offerings found for {quarter} {year}."
-        logger.warning(msg)
+    except Exception as e:
+        logger.error(f"Failed to fetch course details for {course_id}: {e}")
         return {
             "status": "error",
-            "message": msg,
-            "offerings": []
+            "course_details": [],
+            "message": f"Failed to fetch course details: {e}"
         }
+    
 
-    courses = sorted(term_entry.get("courses", []))
-    logger.info(f"Offerings for {quarter} {year}: {courses}")
-
-    return {
-        "status": "success",
-        "message": f"Courses offered in {quarter} {year} have been retrieved.",
-        "offerings": courses
-    }
-
+# Not Being Used For Now
 def build_schedule(avoid_days: list[str], avoid_times: list[str], tool_context: ToolContext) -> str:
     """
     Builds a mock student schedule based on the provided constraints.
@@ -286,6 +212,7 @@ def get_student_details(tool_context: ToolContext) -> dict:
             "status": "error",
             "message": "Student details not found in state."
         }
+    
 
 # === Agent Configuration ===
 MODEL = "gemini-2.0-flash"
@@ -304,7 +231,7 @@ scheduler = Agent(
     model=MODEL,
     description=DESCRIPTION,
     instruction=INSTRUCTIONS,
-    tools=[get_enrollable_courses, build_schedule, get_course_details, get_course_offerings, get_student_details],
+    tools=[get_enrollable_courses, get_course_details, get_student_details],
 )
 
 root_agent = scheduler
