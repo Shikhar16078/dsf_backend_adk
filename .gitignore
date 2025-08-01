@@ -80,3 +80,6 @@ data/
 # ADK-generated artifacts
 __adk_cache__/
 .adk/
+
+
+bigquery_keys.json
